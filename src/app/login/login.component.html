@@ -1,0 +1,26 @@
+<!-- <form action="#" method="post"> -->
+<div class="maincontainer">
+  <div class="imgcontainer">
+    <img src="./assets/img/img_avatar2.png" alt="Avatar" class="avatar">
+  </div>
+
+  <div class="container">
+    <div class="invalid-msg" *ngIf='invlaidLogin'><b>{{errorMessage}}</b></div>
+    <label for="username"><b>Username</b></label>
+    <input type="text" name="username" [(ngModel)]="username" required>
+
+    <label for="password"><b>Password</b></label>
+    <input type="password" name="password" [(ngModel)]="password" required>
+
+    <button type="submit" (click)=handleLogin()>Login</button>
+    <label>
+      <input type="checkbox" checked="checked" name="remember"> Remember me
+    </label>
+  </div>
+
+  <div class="container" style="background-color:#f1f1f1">
+    <button type="button" class="cancelbtn">Cancel</button>
+    <span class="psw"><a href="#">Forgot Password?</a></span>
+  </div>
+</div>
+<!-- </form> -->
