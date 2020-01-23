@@ -1,7 +1,11 @@
-.footer{
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 26px;
-    background-color: #23AAF2;
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 26px;
+  background-color: #23aaf2;
+}
+
+.footer > .container {
+  text-align: center;
 }
