@@ -1,10 +1,32 @@
 <div class="container-border">
-    Welcome {{name}}.
-    <br><br>
+    <h1>Home</h1>
+    <p>
+        Welcome <strong>{{name}}</strong>
+    </p>
 
-    Welcome to our Awesome Todo App.
-    <br>
-    <br>
+    <p> Welcome to our Awesome Todo App.</p>
 
-    You can manage your todos <a routerLink="/todos">here</a>
+    <p>
+        You can manage your todos <a routerLink="/todos">here</a>
+    </p>
+    <hr>
+    <p>Click here to get a customize welcome message from Web Service (Spring Boot Applicaiton).
+        <button class="btn btn-success" (click)=getWelcomeMessage()>Get Welcome Message</button>
+        <span style="margin: 0 10px;"></span>
+        <button class="btn btn-warning" (click)="clearWelcomeMessage()">Clear</button></p>
+
+
+    <p *ngIf="welcomeMessage"><strong>{{welcomeMessage}}</strong></p>
+    <p *ngIf="errorMessage1" class="text-danger">{{errorMessage1}}</p>
+
+    <hr>
+
+    <p>Handle Error/Exception occur from Web Service (Spring Boot Applicaiton).
+        <button class="btn btn-danger" (click)=getExceptionMessage()>Exception message</button>
+        <span style="margin: 0 10px;"></span>
+        <button class="btn btn-warning" (click)="clearExceptionMessage()">Clear</button></p>
+
+    <p *ngIf="exceptionMessage" class="text-danger">{{exceptionMessage}}</p>
+
+
 </div>
