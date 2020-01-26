@@ -6,6 +6,8 @@
   background-color: #23aaf2;
 }
 
-.footer > .container {
+.footer p {
   text-align: center;
+  color: #eeeeee;
+  font-size: 90%;
 }
