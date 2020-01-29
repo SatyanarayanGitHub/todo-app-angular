@@ -1,4 +1,7 @@
 import { Component, OnInit } from "@angular/core";
+import { TodoDataService } from "../service/data/todo-data.service";
+import { HttpErrorResponse } from "@angular/common/http";
+import { throwError } from 'rxjs';
 
 export class Todo {
   constructor(
@@ -15,20 +18,34 @@ export class Todo {
   styleUrls: ["./list-todos.component.css"]
 })
 export class ListTodosComponent implements OnInit {
-  todo = {
-    id: 1,
-    description: "Start learning Angular"
-  };
+  todos: Todo[];
+  errorMessage: String;
 
-  todos = [
-    new Todo(1, "Learn to Java Programming", false, new Date()),
-    new Todo(2, "Learn to Angular JS", false, new Date()),
-    new Todo(3, "Learn to Hibernate", false, new Date()),
-    new Todo(4, "Learn to AWS", false, new Date()),
-    new Todo(5, "Learn to Spring Boot", true, new Date())
-  ];
 
-  constructor() {}
+  constructor(private todoService: TodoDataService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.todoService.retiveAllTodos("satya").subscribe(
+      response => {
+        console.log(response);
+        this.todos = response;
+      },
+      error => this.handelErrorResponse(error)
+    );
+  }
+
+  handelErrorResponse(error: HttpErrorResponse) {
+    //console.log("step-1 :: ", error);
+    //console.log("step-2 :: ", error.error);
+    //console.error("step-3 :: ", error.message);
+
+    //Client side error - such as network issues and JavaScript syntax and type errors.
+    if (error.error instanceof ErrorEvent) {
+      this.errorMessage = `ERROR :: ${error.error.message}`;
+    } else {
+      // Server Error - Such as code errors in the server and database access errors.
+      this.errorMessage = `Error Code: ${error.status}\nMessage: ${error.error.message}`;
+    }
+    return throwError(this.errorMessage);
+  }
 }
