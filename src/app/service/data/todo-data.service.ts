@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Todo } from 'src/app/list-todos/list-todos.component';
+import { Todo } from "src/app/list-todos/list-todos.component";
 
 @Injectable({
   providedIn: "root"
@@ -15,6 +15,13 @@ export class TodoDataService {
       {
         responseType: "json"
       }
+    );
+  }
+
+  deleteTodo(username, id) {
+    console.log("Call TODO webservice !!");
+    return this.http.delete(
+      `http://localhost:8080/user/${username}/todos/${id}`
     );
   }
 }

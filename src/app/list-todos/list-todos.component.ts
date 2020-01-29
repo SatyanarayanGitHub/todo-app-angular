@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { TodoDataService } from "../service/data/todo-data.service";
 import { HttpErrorResponse } from "@angular/common/http";
-import { throwError } from 'rxjs';
+import { throwError } from "rxjs";
 
 export class Todo {
   constructor(
@@ -20,15 +20,33 @@ export class Todo {
 export class ListTodosComponent implements OnInit {
   todos: Todo[];
   errorMessage: String;
-
+  deleteMessage: String;
 
   constructor(private todoService: TodoDataService) {}
 
   ngOnInit() {
+    //Load Todos
+    this.refreshTodos();
+  }
+
+  refreshTodos() {
     this.todoService.retiveAllTodos("satya").subscribe(
       response => {
         console.log(response);
         this.todos = response;
+      },
+      error => this.handelErrorResponse(error)
+    );
+  }
+
+  deleteTodo(id) {
+    console.log("Delete button clicked!!!" + id);
+    this.todoService.deleteTodo("satya", id).subscribe(
+      response => {
+        console.log(response);
+        //Load Todos
+        this.refreshTodos();
+        this.deleteMessage = `Delete of Todo ${id} Successful!`;
       },
       error => this.handelErrorResponse(error)
     );
