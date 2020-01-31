@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { TodoDataService } from "../service/data/todo-data.service";
 import { HttpErrorResponse } from "@angular/common/http";
 import { throwError } from "rxjs";
+import { Router } from '@angular/router';
 
 export class Todo {
   constructor(
@@ -22,7 +23,10 @@ export class ListTodosComponent implements OnInit {
   errorMessage: String;
   deleteMessage: String;
 
-  constructor(private todoService: TodoDataService) {}
+  constructor(
+    private todoService: TodoDataService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     //Load Todos
@@ -40,7 +44,7 @@ export class ListTodosComponent implements OnInit {
   }
 
   deleteTodo(id) {
-    console.log("Delete button clicked!!!" + id);
+    console.log("Delete button clicked for todo id : " + id);
     this.todoService.deleteTodo("satya", id).subscribe(
       response => {
         console.log(response);
@@ -50,6 +54,11 @@ export class ListTodosComponent implements OnInit {
       },
       error => this.handelErrorResponse(error)
     );
+  }
+
+  updateTodo(id) {
+    console.log("Update button clicked for todo id : " + id);
+    this.router.navigate(["todo", id]);
   }
 
   handelErrorResponse(error: HttpErrorResponse) {

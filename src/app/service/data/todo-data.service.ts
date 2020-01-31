@@ -9,7 +9,7 @@ export class TodoDataService {
   constructor(private http: HttpClient) {}
 
   retiveAllTodos(username) {
-    console.log("Call TODO webservice !!");
+    console.log("Call Get All Todo API !!");
     return this.http.get<Todo[]>(
       `http://localhost:8080/user/${username}/todo`,
       {
@@ -19,9 +19,16 @@ export class TodoDataService {
   }
 
   deleteTodo(username, id) {
-    console.log("Call TODO webservice !!");
+    console.log("Call Delete Todo API !!");
     return this.http.delete(
       `http://localhost:8080/user/${username}/todos/${id}`
+    );
+  }
+
+  retriveTodo(username, id) {
+    console.log("Call Get Todo from ID API !!");
+    return this.http.get<Todo>(
+      `http://localhost:8080/user/${username}/todo/${id}`
     );
   }
 }
