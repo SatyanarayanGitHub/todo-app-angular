@@ -26,9 +26,21 @@ export class TodoDataService {
   }
 
   retriveTodo(username, id) {
-    console.log("Call Get Todo from ID API !!");
+    console.log("Call Get Todo API !!");
     return this.http.get<Todo>(
       `http://localhost:8080/user/${username}/todo/${id}`
     );
+  }
+
+  updateTodo(username, todo) {
+    console.log("Call Create Todo API !!");
+
+    return this.http.put(`http://localhost:8080/user/${username}/todo`, todo);
+  }
+
+  saveTodo(username, todo) {
+    console.log("Call Create Todo API !!");
+
+    return this.http.post(`http://localhost:8080/user/${username}/todo`, todo);
   }
 }
