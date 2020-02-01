@@ -2,8 +2,11 @@
     <h1>My Todo's</h1>
     <div class="alert alert-success" *ngIf="deleteMessage">{{deleteMessage}}</div>
     <div class="alert alert-danger" *ngIf="errorMessage">{{errorMessage}}</div>
-    <table class="table">
 
+    <div class="d-flex justify-content-end">        
+        <button class="btn btn-success" (click)="addNewTodo()">Add Todo</button>    
+    </div>
+    <table class="table">
         <thead>
             <tr>
                 <th>Description</th>
@@ -24,6 +27,7 @@
                 <td><button (click)="deleteTodo(todo.id)" class="btn btn-warning">Delete</button></td>
             </tr>
         </tbody>
+
 
     </table>
 </div>

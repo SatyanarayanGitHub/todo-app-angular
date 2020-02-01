@@ -33,7 +33,7 @@ export class TodoDataService {
   }
 
   updateTodo(username, todo) {
-    console.log("Call Create Todo API !!");
+    console.log("Call Update Todo API !!");
 
     return this.http.put(`http://localhost:8080/user/${username}/todo`, todo);
   }

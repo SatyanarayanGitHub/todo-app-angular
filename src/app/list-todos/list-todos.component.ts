@@ -61,6 +61,11 @@ export class ListTodosComponent implements OnInit {
     this.router.navigate(["todo", id]);
   }
 
+  addNewTodo(){
+    console.log("Add New Todo button clicked!!");
+    this.router.navigate(['todo', -1]);
+  }
+
   handelErrorResponse(error: HttpErrorResponse) {
     //console.log("step-1 :: ", error);
     //console.log("step-2 :: ", error.error);
