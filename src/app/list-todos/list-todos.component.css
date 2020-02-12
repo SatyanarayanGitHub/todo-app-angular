@@ -1,3 +1,37 @@
 table {
+    
     margin-top: 20px;
+}
+
+
+table {
+    border-collapse: collapse;
+}
+
+table td {
+    border: 1px solid #333;
+}
+
+.fa-check {
+    color: #28A745;
+}
+
+.fa-remove {
+    color: red;
+}
+
+.fa-edit {
+    cursor: pointer;
+    outline: none;
+    color: #FFC107
+}
+
+.fa-trash {
+    cursor: pointer;
+    outline: none;
+    color: red;
+}
+
+.action-col {
+    text-align: center;
 }

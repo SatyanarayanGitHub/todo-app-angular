@@ -11,9 +11,9 @@
             <tr>
                 <th>Description</th>
                 <th>Target Date</th>
-                <th>Is Completed</th>
-                <th>Update</th>
-                <th>Delete</th>
+                <th class="action-col">Is Completed</th>
+                <th class="action-col">Update</th>
+                <th class="action-col">Delete</th>
             </tr>
 
         </thead>
@@ -22,9 +22,23 @@
             <tr *ngFor="let todo of todos">
                 <td>{{todo.description}}</td>
                 <td>{{todo.targetDate | date | uppercase}}</td>
-                <td>{{todo.done}}</td>
-                <td><button (click)="updateTodo(todo.id)" class="btn btn-success">Update</button></td>
-                <td><button (click)="deleteTodo(todo.id)" class="btn btn-warning">Delete</button></td>
+                <td class="action-col">
+                    <i *ngIf="todo.done" class="fa fa-check"></i>
+                    <i *ngIf="!todo.done" class="fa fa-remove"></i>
+
+                </td>
+                <td class="action-col">
+                    <a><i (click)="updateTodo(todo.id)" class="fa fa-edit"></i></a>
+                    <!--
+                    <button (click)="updateTodo(todo.id)" class="btn btn-success"></button>
+                    -->
+                </td>
+                <td class="action-col">
+                    <a><i (click)="deleteTodo(todo.id)" class="fa fa-trash"></i></a>
+                    <!--
+                    <button (click)="deleteTodo(todo.id)" class="btn btn-warning">Delete</button>
+                    -->
+                </td>
             </tr>
         </tbody>
 
